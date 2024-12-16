@@ -1,9 +1,9 @@
 <h1>Directivas estructurales</h1>
 <h2>&#64;If</h2>
-<p>&#64;If nos permite crear/destruir elementos del DOM de acuerdo a una o varias condiciones</p>
+
 <input type="number" [(ngModel)]="calificacion" min="0" max="10">
 @if (calificacion>=5) {
-    <p>Has aprobado</p>
+    <p>Has superado la prueba!</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Green-Up-Arrow.svg/1200px-Green-Up-Arrow.svg.png"
     alt="aprobado" />
 } @else {
@@ -22,7 +22,7 @@
     <p>{{ventas*.2}}</p>
 }
 
-<h3>Actividad &#64;If</h3>
+<h3>&#64;If</h3>
 <input type="number" [(ngModel)]="edad" min="0">
 @if (edad>65) {
     <p>Jubilado</p>
@@ -31,9 +31,6 @@
 }
 
 <h2>&#64;switch</h2>
-<p>Los bloques &#64;switch muestran el contenido seleccionado por uno de los casos que coincida con la expresión condicional. El valor de la expresión condicional se compara con la expresión de caso utilizando el operador ===.
-El bloque &#64;default es opcional y se puede omitir. Si ningún &#64;case coincide con la expresión y no hay ningún bloque &#64;default, no se muestra nada.
-&#64;switch no necesita por cada caso un equivalente a una declaración break</p>
 <input type="text" [(ngModel)]="color">
 <br/>
 @switch (color) {
@@ -53,7 +50,7 @@ El bloque &#64;default es opcional y se puede omitir. Si ningún &#64;case coinc
   }
 
 <h2>&#64;for</h2>
-<p>&#64;for va a permitirnos iterar un array y por cada item crear un elemento HTML</p>
+
 <p>Receta de tortilla</p>
 <ul>
     @for (ingrediente of ingredientes; track ingrediente) {

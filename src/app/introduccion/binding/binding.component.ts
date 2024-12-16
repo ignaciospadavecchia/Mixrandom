@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './binding.component.css'
 })
 export class BindingComponent {
-  nombre = 'Juan Luis';
+  nombre = 'Ignacio';
   n1: number = 2;
   n2 = 3;
   logo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/2048px-LEGO_logo.svg.png';
@@ -20,10 +20,10 @@ export class BindingComponent {
   apellidoPersona='';
   
   cambiarNombre() {
-    if (this.nombre === 'Juan Luis') {
+    if (this.nombre === 'Ignacio') {
       this.nombre = 'Pedro';
     } else {
-      this.nombre = 'Juan Luis';
+      this.nombre = 'Ignacio';
     }
   }
 

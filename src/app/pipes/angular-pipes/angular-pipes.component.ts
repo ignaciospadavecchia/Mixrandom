@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './angular-pipes.component.css'
 })
 export class AngularPipesComponent {
-  nombre = 'Juan Luis ochoa';
+  nombre = 'Ignacio';
   fechaActual = new Date();
   facturacion = 1099898.5454;
   porcentaje = 0.21;
