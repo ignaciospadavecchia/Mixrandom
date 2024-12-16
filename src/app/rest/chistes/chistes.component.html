@@ -1,0 +1,10 @@
+<h1>API de Chuck Norris</h1>
+<a href="https://api.chucknorris.io/">Documentación de la API</a>
+<h3 class="mt-2">{{chiste.value}}</h3>
+<button class="btn btn-primary" (click)="getChiste()">Nuevo chiste</button>
+
+@if (mostrarError) {
+    <div class="alert alert-danger" role="alert">
+      No se ha podido acceder a los chistes
+    </div>
+}

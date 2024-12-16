@@ -1,0 +1,78 @@
+<div class="container">
+    <h1>Agregar usuario</h1>
+    <form #formulario="ngForm" (submit)="guardar()">
+      <div class="form-group">
+        <label for="nombre">Nombre (obligatorio)</label>
+        <input id="nombre" type="text" class="form-control" name="nombre" [(ngModel)]="usuario.nombre" required #nombre="ngModel"
+          placeholder="Nombre obligatorio" />
+        <!-- <p>{{nombre.valid}}</p> -->
+        @if (!nombre.valid && nombre.touched) {
+          <span class="form-text text-danger">
+            Nombre obligatorio
+          </span>
+        }
+      </div>
+      <div class="form-group mt-2">
+        <label>Edad</label>
+        <input type="number" class="form-control" name="edad" [(ngModel)]="usuario.edad" min="1" required
+          #edad="ngModel" />
+          @if (!edad.valid && edad.touched) {
+            @if (edad.hasError('required')) {
+              <span class="form-text text-danger">
+                Edad obligatoria
+              </span>
+            }
+            @if (edad.hasError('min')) {
+              <span class="form-text text-danger">
+                Edad mínima 1
+              </span>
+            }
+          }
+      </div>
+  
+      <div class="form-group mt-2">
+        <label>Sexo</label>
+        @for (genero of generos; track genero.value) {
+          <label>
+            <input type="radio" name="genero" [(ngModel)]="usuario.genero" [value]="genero.value" />
+            {{ genero.display }}
+          </label>
+        }
+      </div>
+      <div class="form-group mt-2">
+        <label>Rol</label>
+        <select name="role" class="form-select" [(ngModel)]="usuario.rol">
+          @for (rol of roles; track rol.value) {
+            <option [value]="rol.value">{{ rol.display }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group mt-2">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="activo" [(ngModel)]="usuario.activo" />
+            Es Activo
+          </label>
+        </div>
+      </div>
+      <div class="form-group my-2">
+        <label>Aficiones</label>
+        <select multiple name="aficiones" class="form-control" [(ngModel)]="usuario.aficiones">
+          @for (aficion of aficiones; track aficion.value) {
+            <option [value]="aficion.value">{{ aficion.display }}</option>
+          }
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">
+        Aceptar
+      </button>
+    </form>
+    <div class="my-2" style="border-radius: 5px; padding: 10px; border: 1px solid; background-color: lightgray">
+      <div>Detalles del formulario:</div>
+      <pre>¿Es válido?: <br>{{formulario.valid }}</pre>
+      <pre>¿Se ha aceptado?: <br>{{formulario.submitted }}</pre>
+      <pre>Valores introducidos: <br>{{formulario.value | json }}</pre>
+    </div>
+  </div>
+  

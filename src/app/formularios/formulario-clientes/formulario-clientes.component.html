@@ -1,0 +1,85 @@
+<div class="container">
+    <h1>Agregar cliente</h1>
+    <form #formulario="ngForm" (submit)="guardar()">
+      <div class="form-group">
+        <label for="nombre">Nombre (obligatorio)</label>
+        <input type="text" class="form-control" name="nombre" 
+          [(ngModel)]="cliente.nombre" required #nombre="ngModel" id="nombre"
+          placeholder="Nombre obligatorio" />
+        <!-- <p>{{nombre.valid}}</p> -->
+        @if (!nombre.valid && nombre.touched) {
+          <span class="form-text text-danger">
+            Nombre obligatorio
+          </span>
+        }
+      </div>
+
+      <div class="form-group mt-2">
+        <label for="email">Email</label>
+        <input type="email" id="email" 
+          class="form-control" name="email" #email="ngModel" required
+          pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}" 
+          [(ngModel)]="cliente.email"/>
+          @if (!email.valid && email.touched) {
+            @if (email.hasError('required')) {
+              <span class="form-text text-danger">
+                Email obligatorio
+              </span>
+            }
+            @if (email.hasError('pattern')) {
+              <span class="form-text text-danger">
+                Email incorrecto
+              </span>
+            }
+          }
+      </div>
+    
+      <div class="form-group mt-2">
+        <label>Localidad</label>
+        <input type="text" class="form-control" name="text" [(ngModel)]="cliente.localidad"/>
+      </div>
+
+      <div class="form-group mt-2">
+        <label>Facturación anual</label>
+        <input type="number" class="form-control" name="facturación" 
+          [(ngModel)]="cliente.facturacionAnual" min="0" required
+          #facturacion="ngModel" />
+          @if (!facturacion.valid && facturacion.touched) {
+            @if (facturacion.hasError('required')) {
+              <span class="form-text text-danger">
+                Facturacion anual obligatoria
+              </span>
+            }
+            @if (facturacion.hasError('min')) {
+              <span class="form-text text-danger">
+                Facturacion anual mínima 1
+              </span>
+            }
+          }
+      </div>
+
+      <div class="form-group mt-2">
+        <label>Rol</label>
+        <select name="role" class="form-select" [(ngModel)]="cliente.categoria">
+          @for (categoria of categorias; track categoria.value) {
+            <option [value]="categoria.value">{{ categoria.display }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group mt-2">
+        <div class="checkbox">
+          <label for="moroso">
+            <input type="checkbox" name="moroso" [(ngModel)]="cliente.moroso" />
+            Es moroso
+          </label>
+        </div>
+      </div>
+       
+      <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">
+        Aceptar
+      </button>
+    </form>
+
+  </div>
+  

@@ -1,0 +1,84 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre archivo</th>
+        <th scope="col">Bytes</th>
+        <th scope="col">Kilobytes</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (archivo of archivos; track archivo.nombre) {
+            <tr>
+                <th scope="row">{{ archivo.nombre }}</th>
+                <td>{{ archivo.size }}</td>
+                <td>{{ archivo.size | almacenamientoArchivos | number: '1.2-2' }}</td>
+            </tr>
+          }
+    </tbody>
+  </table>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre archivo</th>
+        <th scope="col">Bytes</th>
+        <th scope="col">Kilobytes</th>
+        <th scope="col">Megabytes</th>
+        <th scope="col">GigaBytes</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (archivo of archivos; track archivo.nombre) {
+            <tr>
+                <th scope="row">{{ archivo.nombre }}</th>
+                <td>{{ archivo.size }}</td>
+                <td>{{ archivo.size | almacenamientoArchivosMultiple:'Kb' | number: '1.2-2' }}</td>
+                <td>{{ archivo.size | almacenamientoArchivosMultiple:'Mb' | number: '1.2-2' }}</td>
+                <td>{{ archivo.size | almacenamientoArchivosMultiple:'Gb' | number: '1.2-2' }}</td>
+            </tr>
+          }
+    </tbody>
+  </table>
+
+  <h2>Lo mismo sin pipes</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre archivo</th>
+        <th scope="col">Bytes</th>
+        <th scope="col">Kilobytes</th>
+        <th scope="col">Megabytes</th>
+        <th scope="col">GigaBytes</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (archivo of archivos; track archivo.nombre) {
+            <tr>
+                <th scope="row">{{ archivo.nombre }}</th>
+                <td>{{ archivo.size }}</td>
+                <td>{{ archivo.size /1024 }}</td>
+                <td>{{ archivo.size /1024/1024 | number: '1.2-2' }}</td>
+                <td>{{ archivo.size /1024/1024/1024 | number: '1.2-2' }}</td>
+            </tr>
+          }
+    </tbody>
+  </table>
+  <h2>Actividad</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Lugar</th>
+        <th scope="col">Longitud en m</th>
+        <th scope="col">Longitud en km</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (longitud of longitudes; track longitud.lugar) {
+            <tr>
+                <th scope="row">{{ longitud.lugar }}</th>
+                <td>{{ longitud.longitud }}</td>
+                <td>{{ longitud.longitud | distancias }}</td>
+            </tr>
+          }
+    </tbody>
+  </table>

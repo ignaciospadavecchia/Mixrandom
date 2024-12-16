@@ -1,0 +1,38 @@
+<h1>Técnicas binding</h1>
+<h2>Interpolación</h2>
+<p>Si tenemos una propiedad en el archivo .ts del componente, le podemos dar salida con las dobles llaves. También permite operaciones</p>
+<p>Me llamo: {{nombre}}</p>
+<p>{{n1*n2}}</p>
+<button (click)="cambiarNombre()">Cambiar nombre</button>
+<p>La interpolación también puede afectar a las propiedades html que conocemos. En este ejemplo, vamos a poner una
+  imagen
+  mediante una propiedad cuyo valor va a estar gestionado por el archivo TypeScript </p>
+<img src="{{logo}}" alt="logo de Lego" style="width: 100px;height: 75px;" />
+
+<p>Pero si queremos hacer esto, hay otro método mejor (sugerido)</p>
+<h2>Property binding</h2>
+<p>El property binding permite vincular valores de propiedades html con valores de propiedades del archivo TypeScript.
+  Es muy parecida a la interpolación, pero la propiedad la envolveremos entre corchetes</p>
+<button type="button" (click)="mostrarOcultarImagen()">Mostrar/ocultar imagen</button>
+<br/>
+<img [src]="logo" alt="logo de Lego" [hidden]="verImagen"  style="width: 100px;height: 75px;" />
+
+<h3>Actividad interpolación y property binding</h3>
+<label for="nombre">{{textoLabel}}</label>
+<input type="text" id="nombre" [disabled]="deshabilitarInput"/>
+<button type="button" (click)="habilitarDeshabilitarInput()">Habilitar/deshabilitar input</button>
+
+<h2>Binding de doble vía</h2>
+<p>Hasta ahora hemos conseguido conseguir una interactividad interesante. Gracias a los eventos
+  cambiamos valores del TypeScript del componente para transformar la vista html. Podemós ir más allá
+  Vamos a suponer que queremos que, en aquellos elementos editables, cuando escribamos, sin programar
+  nada, queremos una respuesta determinada de la web. Eso se consigue con el binding de doble vía.
+  Esto es posible gracias a algo que Angular tiene y que se llama ngModel
+</p>
+<input type="text" [(ngModel)]="texto"/>
+<p>{{texto}}</p>
+
+<h3>Actividad binding doble vía</h3>
+<input type="text" [(ngModel)]="nombrePersona" placeholder="Introduce nombre"/>
+<input type="text" [(ngModel)]="apellidoPersona" placeholder="Introduce apellido"/>
+<p>{{nombrePersona}} {{apellidoPersona}}</p>

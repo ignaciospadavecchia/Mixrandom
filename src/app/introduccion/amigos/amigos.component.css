@@ -1,0 +1,19 @@
+.avatar{
+    border-radius: 50%;
+    width: 40px;
+}
+
+.mejorAmigo td, .mejorAmigo th{
+    background-color: lightblue;
+    color: blue;   
+}
+
+.debeDinero td, .debeDinero th{
+    background-color: red;
+    color: white;   
+}
+
+.ambos td, .ambos th{
+    background-color: purple;
+    color: white;   
+}
